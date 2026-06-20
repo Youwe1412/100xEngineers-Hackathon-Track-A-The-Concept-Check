@@ -16,7 +16,7 @@ import { reflectionLead } from '../lib/rungCopy.ts';
 import type { Criterion, SoloRung } from '../lib/types.ts';
 
 export const OPENING_PROMPT =
-  'Explain what an interface is and why it exists, in your own words, with an example.';
+  "In your own words, what do you think an interface is, and why does it exist? Say as much or as little as feels true to you, there's no right length.";
 
 // What is on screen. Recording itself is a visual handled by the recorder hook;
 // these phases describe the larger flow.
