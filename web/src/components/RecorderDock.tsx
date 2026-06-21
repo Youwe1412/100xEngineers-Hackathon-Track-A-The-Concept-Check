@@ -18,22 +18,16 @@ interface RecorderDockProps {
 export function RecorderDock({ busy, hint, onVoice, onText }: RecorderDockProps) {
   const recorder = useRecorder();
   const [typing, setTyping] = useState(false);
-  const [debug, setDebug] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // No microphone support: go straight to text, never strand the learner.
   useEffect(() => {
     if (!recorder.supported) setTyping(true);
   }, [recorder.supported]);
 
-  // TEMP DIAGNOSTIC: decode the recorded clip and report real audio duration +
-  // peak amplitude. Peak ~0 means the mic captured silence (the cause of the
-  // phantom "you"); a healthy peak means audio is fine and the bug is downstream.
+  // Developer-only diagnostic: decode the recorded clip and log real audio
+  // duration + peak amplitude. Never rendered in the UI.
   async function probe(blob: Blob) {
-    const line = (msg: string) => {
-      setDebug(msg);
-      // eslint-disable-next-line no-console
-      console.log('[mic probe]', msg);
-    };
     try {
       const buf = await blob.arrayBuffer();
       const Ctor =
@@ -51,11 +45,14 @@ export function RecorderDock({ busy, hint, onVoice, onText }: RecorderDockProps)
         }
       }
       ctx.close().catch(() => {});
-      line(
+      // eslint-disable-next-line no-console
+      console.log(
+        '[mic probe]',
         `size ${(blob.size / 1024).toFixed(1)}KB · ${decoded.duration.toFixed(2)}s · peak ${peak.toFixed(3)} · ${blob.type || 'no-type'}`,
       );
     } catch (err) {
-      line(`size ${(blob.size / 1024).toFixed(1)}KB · decode FAILED: ${String(err)} · ${blob.type || 'no-type'}`);
+      // eslint-disable-next-line no-console
+      console.log('[mic probe]', `size ${(blob.size / 1024).toFixed(1)}KB · decode FAILED: ${String(err)} · ${blob.type || 'no-type'}`);
     }
   }
 
@@ -63,10 +60,15 @@ export function RecorderDock({ busy, hint, onVoice, onText }: RecorderDockProps)
     if (busy) return;
     if (recorder.isRecording) {
       const blob = await recorder.stop();
-      await probe(blob);
-      if (blob.size > 0) onVoice(blob);
+      void probe(blob);
+      if (blob.size > 0) {
+        // Brief confirmation flash before handing off to transcription
+        setShowConfirm(true);
+        setTimeout(() => setShowConfirm(false), 1200);
+        onVoice(blob);
+      }
     } else {
-      setDebug(null);
+      setShowConfirm(false);
       await recorder.start();
     }
   }
@@ -93,21 +95,25 @@ export function RecorderDock({ busy, hint, onVoice, onText }: RecorderDockProps)
         onToggle={handleToggle}
       />
       <div className="flex min-h-[1.5rem] flex-col items-center gap-1 text-center">
-        <p className="text-sm text-ink-soft" aria-live="polite">
-          {recorder.isRecording ? 'Listening. Tap to finish.' : hint}
-        </p>
+        {showConfirm ? (
+          <p className="animate-check flex items-center gap-1.5 text-sm font-medium text-accent" role="status">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Recording received
+          </p>
+        ) : (
+          <p className="text-sm text-ink-soft" aria-live="polite">
+            {recorder.isRecording ? 'Listening. Tap to finish.' : hint}
+          </p>
+        )}
         {recorder.error ? (
           <p className="text-sm text-seam" role="alert">
             {recorder.error}
           </p>
         ) : null}
-        {debug ? (
-          <p className="font-mono text-xs text-muted" aria-live="polite">
-            {debug}
-          </p>
-        ) : null}
       </div>
-      {!recorder.isRecording ? (
+      {!recorder.isRecording && !showConfirm ? (
         <button
           type="button"
           onClick={() => setTyping(true)}
@@ -119,3 +125,4 @@ export function RecorderDock({ busy, hint, onVoice, onText }: RecorderDockProps)
     </div>
   );
 }
+

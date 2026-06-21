@@ -4,6 +4,7 @@ import { OpeningScreen } from './OpeningScreen.tsx';
 import { DialogueThread } from './DialogueThread.tsx';
 import { RecorderDock } from './RecorderDock.tsx';
 import { ThinkingIndicator } from './ThinkingIndicator.tsx';
+import { PhaseStatus } from './PhaseStatus.tsx';
 import { DiagnosisCard } from './DiagnosisCard.tsx';
 
 // Maps the controller's Phase to one focal element. Never shows the learner more
@@ -79,24 +80,10 @@ export function SessionView() {
             onText={(text) => void d.submitAnswer({ text })}
           />
         ) : (
-          <ThinkingIndicator label={busyLabel(d.phase)} />
+          <PhaseStatus phase={d.phase} />
         )}
       </div>
     </div>
   );
 }
 
-function busyLabel(phase: string): string {
-  switch (phase) {
-    case 'transcribing':
-      return 'Reading your words back...';
-    case 'verifying':
-      return 'Looking for the seam...';
-    case 'reflecting':
-      return 'Forming one question...';
-    case 'judging':
-      return 'Sitting with your answer...';
-    default:
-      return 'One moment...';
-  }
-}
