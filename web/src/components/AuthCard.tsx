@@ -30,6 +30,9 @@ export function AuthCard() {
         const { data, error: signUpError } = await supabase.auth.signUp({
           email,
           password,
+          options: {
+            emailRedirectTo: window.location.origin,
+          },
         });
         if (signUpError) throw signUpError;
         // If email confirmation is on, there is no session yet.
