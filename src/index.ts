@@ -1,4 +1,4 @@
-// Public API for the Interface Concept Checker deterministic engine.
+// Public API for the Interface Seam Finder deterministic engine.
 // Pure logic only. Wire this to a DB and an LLM at a higher layer.
 
 export {

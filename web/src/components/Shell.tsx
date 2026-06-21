@@ -11,9 +11,14 @@ export function Shell({ children, onSignOut }: ShellProps) {
     <div className="min-h-full flex flex-col">
       <header className="w-full">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-6 py-5">
-          <span className="text-sm font-medium tracking-wide text-ink-soft">
-            Concept Check
-          </span>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium tracking-wide text-ink-soft">
+              The Seam Finder
+            </span>
+            <span className="text-[0.65rem] uppercase tracking-wider text-muted mt-0.5">
+              By Yuvrajsinh Gohil
+            </span>
+          </div>
           {onSignOut ? (
             <button
               type="button"

@@ -1,4 +1,4 @@
-// The deterministic spine of the Interface Concept Checker.
+// The deterministic spine of the Interface Seam Finder.
 // Every function here is pure: it takes state plus input and returns a new state
 // or a decision. No mutation of inputs, no side effects, no I/O, no LLM calls.
 // The model's verdicts are passed IN as plain objects (VerifierResult,

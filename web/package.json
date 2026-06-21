@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Voice-first Socratic frontend for the Interface Concept Checker. A calm diagnostic mirror, never a test.",
+  "description": "Voice-first Socratic frontend for the Interface Seam Finder. A calm diagnostic mirror, never a test.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

@@ -1,4 +1,4 @@
-# 🧠 The Concept Check — Interface
+# 🧠 The Seam Finder — Interface
 
 > A diagnostic tool that tests whether learners can **derive** the concept of "interface" from first principles, not just recognise it.
 

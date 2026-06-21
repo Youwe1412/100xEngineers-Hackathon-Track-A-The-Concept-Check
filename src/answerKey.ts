@@ -1,4 +1,4 @@
-// Hardcoded reference data for the Interface Concept Checker.
+// Hardcoded reference data for the Interface Seam Finder.
 // This is the fixed answer key, the SOLO ladder, the seam-check order, and the
 // per-rung forbidden words. All frozen so callers cannot mutate it at runtime.
 

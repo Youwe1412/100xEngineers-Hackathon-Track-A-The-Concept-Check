@@ -52,8 +52,11 @@ export function AuthCard() {
     <div className="flex flex-1 items-center justify-center">
       <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-8 shadow-soft">
         <h1 className="font-serif text-2xl leading-tight text-ink">
-          Concept Check
+          The Seam Finder
         </h1>
+        <p className="mt-1 text-xs uppercase tracking-wider text-muted font-medium">
+          By Yuvrajsinh Gohil
+        </p>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
           Find out whether you truly understand a concept, or just recognize the
           words.

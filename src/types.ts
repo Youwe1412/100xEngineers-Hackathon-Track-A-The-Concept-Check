@@ -1,4 +1,4 @@
-// Shared types for the Interface Concept Checker deterministic engine.
+// Shared types for the Interface Seam Finder deterministic engine.
 // Pure type declarations only. No runtime logic, no imports of any framework.
 
 // The SOLO taxonomy rungs, ordered low to high. See SOLO_LADDER in answerKey.ts.

@@ -1,7 +1,7 @@
 {
   "name": "interface-concept-checker",
   "version": "0.1.0",
-  "description": "Deterministic engine for the Interface Concept Checker. Pure logic, no DB, no LLM, no frontend.",
+  "description": "Deterministic engine for the Interface Seam Finder. Pure logic, no DB, no LLM, no frontend.",
   "type": "module",
   "license": "MIT",
   "scripts": {

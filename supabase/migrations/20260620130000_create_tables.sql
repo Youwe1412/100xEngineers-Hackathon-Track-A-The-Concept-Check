@@ -1,4 +1,4 @@
--- Migration 001: Create tables for the Interface Concept Checker
+-- Migration 001: Create tables for the Interface Seam Finder
 -- sessions, turns, gaps, closes
 -- Idempotent: uses CREATE TABLE IF NOT EXISTS
 

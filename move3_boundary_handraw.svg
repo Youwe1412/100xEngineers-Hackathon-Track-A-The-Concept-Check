@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200"
+  font-family="'Caveat', 'Patrick Hand', 'Comic Sans MS', cursive">
+
+  <defs>
+    <!-- Paper texture filter -->
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <!-- Rough edge filter for boxes -->
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Marker for arrows -->
+    <marker id="pen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1a1a2e"/>
+    </marker>
+    <marker id="pen-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <!-- ========== PAPER BACKGROUND ========== -->
+  <rect width="900" height="1200" fill="#fdf6e3" filter="url(#paper)"/>
+  <!-- Faint ruled lines like notebook paper -->
+  <g stroke="#ddd" stroke-width="0.5" opacity="0.6">
+    <line x1="0" y1="80"  x2="900" y2="80"/>
+    <line x1="0" y1="110" x2="900" y2="110"/>
+    <line x1="0" y1="140" x2="900" y2="140"/>
+    <line x1="0" y1="170" x2="900" y2="170"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="230" x2="900" y2="230"/>
+    <line x1="0" y1="260" x2="900" y2="260"/>
+    <line x1="0" y1="290" x2="900" y2="290"/>
+    <line x1="0" y1="320" x2="900" y2="320"/>
+    <line x1="0" y1="350" x2="900" y2="350"/>
+    <line x1="0" y1="380" x2="900" y2="380"/>
+    <line x1="0" y1="410" x2="900" y2="410"/>
+    <line x1="0" y1="440" x2="900" y2="440"/>
+    <line x1="0" y1="470" x2="900" y2="470"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+    <line x1="0" y1="530" x2="900" y2="530"/>
+    <line x1="0" y1="560" x2="900" y2="560"/>
+    <line x1="0" y1="590" x2="900" y2="590"/>
+    <line x1="0" y1="620" x2="900" y2="620"/>
+    <line x1="0" y1="650" x2="900" y2="650"/>
+    <line x1="0" y1="680" x2="900" y2="680"/>
+    <line x1="0" y1="710" x2="900" y2="710"/>
+    <line x1="0" y1="740" x2="900" y2="740"/>
+    <line x1="0" y1="770" x2="900" y2="770"/>
+    <line x1="0" y1="800" x2="900" y2="800"/>
+    <line x1="0" y1="830" x2="900" y2="830"/>
+    <line x1="0" y1="860" x2="900" y2="860"/>
+    <line x1="0" y1="890" x2="900" y2="890"/>
+    <line x1="0" y1="920" x2="900" y2="920"/>
+    <line x1="0" y1="950" x2="900" y2="950"/>
+    <line x1="0" y1="980" x2="900" y2="980"/>
+    <line x1="0" y1="1010" x2="900" y2="1010"/>
+    <line x1="0" y1="1040" x2="900" y2="1040"/>
+    <line x1="0" y1="1070" x2="900" y2="1070"/>
+    <line x1="0" y1="1100" x2="900" y2="1100"/>
+    <line x1="0" y1="1130" x2="900" y2="1130"/>
+    <line x1="0" y1="1160" x2="900" y2="1160"/>
+  </g>
+  <!-- Left margin red line (like real notebook) -->
+  <line x1="70" y1="0" x2="70" y2="1200" stroke="#f5a5a5" stroke-width="1.2"/>
+
+  <!-- ========== TITLE ========== -->
+  <text x="450" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#1a1a2e"
+        transform="rotate(-0.4,450,52)">Move 3 — The Boundary</text>
+  <text x="450" y="76" text-anchor="middle" font-size="15" fill="#555"
+        transform="rotate(0.3,450,76)">Deterministic  vs  Probabilistic</text>
+  <!-- Underline title (hand-drawn feel) -->
+  <path d="M130,82 Q450,90 770,80" stroke="#1a1a2e" stroke-width="1.8" fill="none"/>
+
+  <!-- ========== THE BOLD DIVIDING LINE ========== -->
+  <!-- This is THE line between the two worlds -->
+  <path d="M450,105 Q453,400 448,750 Q451,900 450,1140"
+        stroke="#c0392b" stroke-width="3.5" fill="none" stroke-dasharray="10,5"
+        opacity="0.85"/>
+  <text x="452" y="430" font-size="13" fill="#c0392b" transform="rotate(90,452,430)"
+        text-anchor="middle">— — — THE LINE — — —</text>
+
+  <!-- ========== LEFT: DETERMINISTIC BOX ========== -->
+  <!-- Main box (hand-sketchy rectangle) -->
+  <path d="M82,108 Q84,106 430,109 Q432,111 428,720 Q426,724 82,720 Q78,716 82,108"
+        fill="#dbeafe" fill-opacity="0.55" stroke="#1e3a8a" stroke-width="2.5"
+        stroke-linejoin="round" filter="url(#rough)"/>
+
+  <!-- Section label -->
+  <text x="255" y="140" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e3a8a"
+        transform="rotate(-0.6,255,140)">🔷 DETERMINISTIC</text>
+  <text x="255" y="160" text-anchor="middle" font-size="13" fill="#3b4a6b">(fixed, rule-based — never drifts)</text>
+
+  <!-- Item 1 -->
+  <text x="95" y="198" font-size="16" fill="#1e3a8a">✎ Answer Key</text>
+  <path d="M95,202 Q230,204 370,200" stroke="#1e3a8a" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="110" y="220" font-size="12.5" fill="#333">• relational_core (the WHY)</text>
+  <text x="110" y="238" font-size="12.5" fill="#333">• 4 pillars: common_language,</text>
+  <text x="122" y="255" font-size="12.5" fill="#333">  rules, protocol, contract</text>
+  <text x="110" y="272" font-size="12" fill="#888" font-style="italic">Object.freeze'd — no model touches it</text>
+
+  <!-- Item 2 -->
+  <text x="95" y="305" font-size="16" fill="#1e3a8a">✎ SOLO Ladder</text>
+  <path d="M95,309 Q230,311 370,307" stroke="#1e3a8a" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="110" y="328" font-size="12.5" fill="#333">prestructural → unistructural</text>
+  <text x="110" y="346" font-size="12.5" fill="#333">→ multistructural → relational</text>
+  <text x="110" y="364" font-size="12.5" fill="#333">→ extended_abstract</text>
+  <text x="110" y="381" font-size="12" fill="#888" font-style="italic">Rung definitions are fixed</text>
+
+  <!-- Item 3 -->
+  <text x="95" y="413" font-size="16" fill="#1e3a8a">✎ State Machine</text>
+  <path d="M95,417 Q230,419 370,415" stroke="#1e3a8a" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="110" y="436" font-size="12.5" fill="#333">• computeSeam() — find 1st fail</text>
+  <text x="110" y="454" font-size="12.5" fill="#333">• nextAction() — IF/THEN only</text>
+  <text x="110" y="472" font-size="12.5" fill="#333">• recordClose() — advance seam</text>
+  <text x="110" y="490" font-size="12.5" fill="#333">• Hard cap: 2 probes max</text>
+  <text x="110" y="507" font-size="12" fill="#888" font-style="italic">Pure TypeScript, zero I/O</text>
+
+  <!-- Item 4 -->
+  <text x="95" y="539" font-size="16" fill="#1e3a8a">✎ DB Schema + RLS</text>
+  <path d="M95,543 Q230,545 370,541" stroke="#1e3a8a" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="110" y="562" font-size="12.5" fill="#333">sessions → turns → gaps → closes</text>
+  <text x="110" y="580" font-size="12.5" fill="#333">user_id = auth.uid() on all tables</text>
+  <text x="110" y="597" font-size="12" fill="#888" font-style="italic">Structure is fixed, not generated</text>
+
+  <!-- Item 5 -->
+  <text x="95" y="629" font-size="16" fill="#1e3a8a">✎ Criterion Ladder</text>
+  <path d="M95,633 Q230,635 370,631" stroke="#1e3a8a" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="110" y="652" font-size="12.5" fill="#333">Seam checked in fixed order:</text>
+  <text x="110" y="670" font-size="12.5" fill="#333">1. relational_core (always first)</text>
+  <text x="110" y="688" font-size="12.5" fill="#333">2. common_language  3. rules</text>
+  <text x="110" y="706" font-size="12.5" fill="#333">4. protocol  5. contract</text>
+
+  <!-- ========== RIGHT: PROBABILISTIC BOX ========== -->
+  <path d="M470,108 Q472,106 815,109 Q818,111 814,720 Q812,724 470,720 Q466,716 470,108"
+        fill="#fef3c7" fill-opacity="0.60" stroke="#92400e" stroke-width="2.5"
+        stroke-linejoin="round" filter="url(#rough)"/>
+
+  <text x="642" y="140" text-anchor="middle" font-size="22" font-weight="bold" fill="#92400e"
+        transform="rotate(0.5,642,140)">🟡 PROBABILISTIC</text>
+  <text x="642" y="160" text-anchor="middle" font-size="13" fill="#78350f">(model reads language — can drift)</text>
+
+  <!-- Item 1 -->
+  <text x="483" y="198" font-size="16" fill="#92400e">✎ Transcription</text>
+  <path d="M483,202 Q614,204 760,200" stroke="#92400e" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="498" y="220" font-size="12.5" fill="#333">Groq Whisper-large-v3</text>
+  <text x="498" y="238" font-size="12.5" fill="#333">Audio → text (EN/HI code-switch)</text>
+  <text x="498" y="255" font-size="12" fill="#888" font-style="italic">Risk: garbled = misgraded derivation</text>
+
+  <!-- Item 2 -->
+  <text x="483" y="290" font-size="16" fill="#92400e">✎ Verifier (5 calls)</text>
+  <path d="M483,294 Q614,296 760,292" stroke="#92400e" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="498" y="313" font-size="12.5" fill="#333">gpt-oss-120b, temp=0</text>
+  <text x="498" y="331" font-size="12.5" fill="#333">1 call per criterion, binary output</text>
+  <text x="498" y="349" font-size="12.5" fill="#333">{present: boolean, reason: string}</text>
+  <text x="498" y="366" font-size="12" fill="#888" font-style="italic">5 atomic calls → no halo effect</text>
+
+  <!-- Item 3 — Questioner -->
+  <text x="483" y="400" font-size="16" fill="#92400e">✎ Questioner</text>
+  <path d="M483,404 Q614,406 760,402" stroke="#92400e" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="498" y="423" font-size="12.5" fill="#333">gpt-oss-120b, temp=0.4</text>
+  <text x="498" y="441" font-size="12.5" fill="#333">Writes the Socratic question</text>
+  <text x="498" y="459" font-size="12.5" fill="#888" font-style="italic">❌ NO access to answer key</text>
+  <text x="498" y="477" font-size="12" fill="#888" font-style="italic">Forbidden words injected per seam</text>
+
+  <!-- Item 4 — CLOSE-JUDGE (THE KEY ONE) — will be circled -->
+  <text x="483" y="517" font-size="16" fill="#92400e">✎ Close-Judge</text>
+  <path d="M483,521 Q614,523 760,519" stroke="#92400e" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="498" y="540" font-size="12.5" fill="#333">gpt-oss-120b, temp=0</text>
+  <text x="498" y="558" font-size="12.5" fill="#333">Decides: real_close vs fake_close</text>
+  <text x="498" y="576" font-size="12.5" fill="#333">Reads: seam name + learner's words</text>
+  <text x="498" y="593" font-size="12" fill="#333">Grounded in fixed answer key</text>
+  <text x="498" y="611" font-size="12" fill="#555" font-weight="bold">Never speaks to learner →</text>
+  <text x="498" y="629" font-size="12" fill="#555" font-weight="bold">can't soften verdict</text>
+
+  <!-- ======= BIG RED CIRCLE around Close-Judge ======= -->
+  <ellipse cx="628" cy="571" rx="152" ry="80"
+    fill="none" stroke="#c0392b" stroke-width="3.5" opacity="0.9"
+    transform="rotate(-2,628,571)" filter="url(#rough)"/>
+  <!-- "THE JUDGE" label with arrow pointing to circle -->
+  <text x="822" y="535" font-size="15" font-weight="bold" fill="#c0392b"
+        transform="rotate(2,822,535)">← THE JUDGE</text>
+  <text x="822" y="555" font-size="12" fill="#c0392b">sits here</text>
+  <path d="M820,540 Q790,550 785,562" stroke="#c0392b" stroke-width="2"
+        fill="none" marker-end="url(#pen-red)"/>
+
+  <!-- Item 5 — no-free-lunch note -->
+  <text x="483" y="670" font-size="13" fill="#92400e" font-weight="bold">Why here, not elsewhere?</text>
+  <text x="483" y="690" font-size="12" fill="#555">• Human check → slower, not scalable</text>
+  <text x="483" y="708" font-size="12" fill="#555">• Keyword rule → rewards recitation</text>
+  <text x="483" y="726" font-size="12" fill="#555">  (penalises real plain-language)</text>
+
+  <!-- ========== FLOW SECTION (bottom) ========== -->
+  <!-- Full-width box for the conversation flow -->
+  <path d="M82,740 Q84,738 815,741 Q818,743 814,940 Q812,943 82,940 Q78,937 82,740"
+        fill="#f0fdf4" fill-opacity="0.6" stroke="#166534" stroke-width="2.2"
+        stroke-linejoin="round" filter="url(#rough)"/>
+
+  <text x="450" y="768" text-anchor="middle" font-size="18" font-weight="bold" fill="#166534">
+    CONVERSATION LOOP</text>
+  <text x="450" y="788" text-anchor="middle" font-size="12" fill="#555">
+    (which box each step lives in)</text>
+
+  <!-- Flow line -->
+  <!-- Step boxes inline -->
+  <!-- 1 Learner speaks -->
+  <rect x="90" y="805" width="110" height="46" rx="6" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="145" y="826" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">👤 Learner</text>
+  <text x="145" y="843" text-anchor="middle" font-size="10" fill="#555">speaks/types</text>
+
+  <path d="M200,828 L235,828" stroke="#333" stroke-width="1.6" marker-end="url(#pen)"/>
+  <text x="217" y="821" text-anchor="middle" font-size="9" fill="#666">audio</text>
+
+  <!-- 2 Transcribe -->
+  <rect x="236" y="805" width="110" height="46" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="291" y="826" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">🎤 Transcribe</text>
+  <text x="291" y="843" text-anchor="middle" font-size="9" fill="#92400e">Whisper v3 🟡</text>
+
+  <path d="M346,828 L381,828" stroke="#333" stroke-width="1.6" marker-end="url(#pen)"/>
+  <text x="363" y="821" text-anchor="middle" font-size="9" fill="#666">text</text>
+
+  <!-- 3 Verify -->
+  <rect x="382" y="805" width="110" height="46" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="437" y="826" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">🔍 Verify</text>
+  <text x="437" y="843" text-anchor="middle" font-size="9" fill="#92400e">5× LLM calls 🟡</text>
+
+  <path d="M492,828 L527,828" stroke="#1e3a8a" stroke-width="1.6" marker-end="url(#pen)"/>
+  <text x="509" y="820" text-anchor="middle" font-size="9" fill="#1e3a8a">5 bools</text>
+
+  <!-- 4 Engine -->
+  <rect x="528" y="805" width="110" height="46" rx="6" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="583" y="826" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a">⚙️ Engine</text>
+  <text x="583" y="843" text-anchor="middle" font-size="9" fill="#1e3a8a">computeSeam 🔷</text>
+
+  <path d="M638,828 L673,828" stroke="#333" stroke-width="1.6" marker-end="url(#pen)"/>
+  <text x="655" y="820" text-anchor="middle" font-size="9" fill="#333">action</text>
+
+  <!-- 5 Decision -->
+  <polygon points="718,805 780,828 718,851 656,828" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="718" y="831" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">type?</text>
+
+  <!-- Branch labels from diamond -->
+  <text x="795" y="820" font-size="10" fill="#16a34a" font-weight="bold">✅ done</text>
+  <text x="795" y="835" font-size="10" fill="#dc2626" font-weight="bold">🛑 stop</text>
+
+  <!-- Second row: probe path -->
+  <!-- probe arrow down and left -->
+  <path d="M718,851 Q718,876 640,882 Q490,890 400,882"
+        stroke="#d97706" stroke-width="1.6" fill="none" marker-end="url(#pen)"/>
+  <text x="560" y="872" text-anchor="middle" font-size="10" fill="#d97706">probe → /question (LLM) 🟡</text>
+
+  <!-- Question back to learner -->
+  <path d="M400,882 Q280,888 210,882 Q180,876 180,860 L180,851"
+        stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#pen)"/>
+  <text x="300" y="900" text-anchor="middle" font-size="10" fill="#333">Socratic Q back to learner</text>
+
+  <!-- 2nd attempt flow -->
+  <text x="90" y="926" font-size="12" fill="#333">2nd attempt →</text>
+  <rect x="190" y="910" width="110" height="36" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="245" y="933" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">⚖️ Close-Judge</text>
+
+  <path d="M300,928 L355,928" stroke="#1e3a8a" stroke-width="1.5" marker-end="url(#pen)"/>
+
+  <rect x="355" y="910" width="120" height="36" rx="6" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.8" filter="url(#rough)"/>
+  <text x="415" y="929" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">⚙️ recordClose()</text>
+  <text x="415" y="943" text-anchor="middle" font-size="9" fill="#1e3a8a">advance seam 🔷</text>
+
+  <!-- ========== ACCEPTED FAILURE MODE (bottom) ========== -->
+  <path d="M82,960 Q84,958 815,961 Q818,963 814,1080 Q812,1082 82,1080 Q78,1078 82,960"
+        fill="#fff7ed" fill-opacity="0.7" stroke="#9a3412" stroke-width="2"
+        stroke-dasharray="8,4" stroke-linejoin="round"/>
+
+  <text x="450" y="990" text-anchor="middle" font-size="18" font-weight="bold" fill="#9a3412">
+    ⚠ ACCEPTED FAILURE MODE</text>
+
+  <text x="100" y="1018" font-size="13.5" fill="#333">The Close-Judge can be fooled by fluent-but-hollow answers</text>
+  <text x="100" y="1040" font-size="13.5" fill="#333">(surface-fluency bias). A learner who recites smoothly may</text>
+  <text x="100" y="1062" font-size="13.5" fill="#333">pass even without genuine derivation.</text>
+
+  <text x="100" y="1094" font-size="13" fill="#9a3412" font-weight="bold">Mitigations already in code:</text>
+  <text x="100" y="1113" font-size="12.5" fill="#555">• binary output only (no partial scores)</text>
+  <text x="450" y="1113" font-size="12.5" fill="#555">• 1 criterion per call (no halo)</text>
+  <text x="100" y="1131" font-size="12.5" fill="#555">• falsification framing: "TRUE only if mechanism is in learner's own words"</text>
+  <text x="100" y="1149" font-size="12.5" fill="#555">• parse failure defaults to fake_close (safe side)</text>
+
+  <!-- ========== BOTTOM: who judges 2nd derivation ========== -->
+  <text x="450" y="1180" text-anchor="middle" font-size="14" font-weight="bold" fill="#c0392b">
+    ★ The Close-Judge decides the second derivation — it reads language but is anchored to the fixed key and never speaks to the learner ★
+  </text>
+
+</svg>
